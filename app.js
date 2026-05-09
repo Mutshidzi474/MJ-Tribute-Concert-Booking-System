@@ -30,8 +30,15 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 //*************************F I L L  I N  R O U T E S  C O D E  H E R E ********************************
-//let me know if you need assistance here or you can ask Mutshidzi
+//I avoided adding the middleware code here related to the routes for now, will update when routes is finished.
 
+
+
+//Dear group members, please ensure that the following 3 lines of code remaing at the bottom of the app.js
+//after every call for middleware, because express runs from top to bottom for some fun reason.(remove comment when project completed)
+const {notFound,errorHandler}=require('./middleware/errorMiddleware');
+app.use(notFound);
+app.use(errorHandler);
 
 //Server
 const port=process.env.PORT || 3000;
