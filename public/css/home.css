@@ -1,0 +1,61 @@
+ html, body {
+    height: 100%;
+    margin: 0;
+    background-image: url('sushil-ghimire-5UbIqV58CW8-unsplash.jpg');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    overflow-y:scroll;
+  }
+  .content {
+    flex: 1;
+  }
+  .navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  .navbar-dark .navbar-nav .nav-link:hover {
+    color: #ff0000;
+  }
+  .jumbotron {
+    background-color: rgba(0, 0, 0, 0.7); /* Adds a dark overlay for readability */
+    color: #fff;
+    text-align: center;
+  }
+  .btn-primary {
+    background-color: #ff0000;
+    border-color: #ff0000;
+    color: #fff;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+  .btn-primary:hover {
+    background-color: #333;
+    border-color: #666;
+    color: #ccc;
+  }
+  .animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  .navbar {
+    background: linear-gradient(to right, #000 0%, #000 50%, #333 50%, #333 100%);
+    background-size: 200% 200%;
+    animation: zebra-stripe 5s ease infinite;
+  }
+
+  @keyframes zebra-stripe {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
