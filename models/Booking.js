@@ -1,28 +1,12 @@
-const e = require('express');
-const mongoose = require('mongoose');
-
-const eventSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-
-    event: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Event',
-        required: true
-    },
-
-    ticketsBooked: {
-        type: Number,
-        required: true
-    },
-
-    bookingDate: {
-        type: Date,
-        default: Date.now
-    }
+//booking schema
+const bookingSchema = new mongoose.Schema({
+    bookingID: { type: String, required: true, unique: true },
+    userID: { type: Int16Array, required: true },
+    eventID: { type: Int16Array, required: true },
+    price: { type: Number, required: true },
+    bookingDate: { type: Date, required: true },
 });
 
-module.exports = mongoose.model('Booking', bookingSchema);
+const Booking = mongoose.model('Booking', bookingSchema);
+
+module.exports = Booking;
