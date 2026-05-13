@@ -1,4 +1,4 @@
-const bcrypt=require('bcryptjs'); // importing bcryptjs for password hashing and comparison
+const bcrypt=require('bcryptjs');
 const hashPassword=async(password)=>{
     const salt=await bcrypt.genSalt(10);
     return await bcrypt.hash(password,salt);
