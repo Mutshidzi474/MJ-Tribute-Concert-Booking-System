@@ -14,7 +14,10 @@ Aidan Lakmeeharan - 602899 - Database Engineer
 Thabang Molise - 601586 - Security and DevOps Engineer
 
 Setup:
-Extract the folder in to your File Libraries. Once completed, Open the folder in VSCode, from there open the Terminal either from the Hotbar, or using the shortcut "Cntrl+`". In the terminal, rn the commands "npm init -y" to initialize, and "npm install Express" and "npm install express-validator" to install Express for JavaScript. Once that is complete, open your browser, in URL Bar, type "localhost:2080", press Enter, and the website will display.
+Extract the folder in to your File Libraries. Once completed, Open the folder in VSCode.
+From there open the Terminal either from the Hotbar, or using the shortcut "Cntrl+`". In the terminal, rn the commands "npm init -y" to initialize, and "npm install Express" and "npm install express-validator" to install Express for JavaScript.
+Once that is complete, open your browser, in URL Bar, type "localhost:2080", press Enter, and the website will display.
 
-Picture of the Homescreen should display like this:
 
+Reflection:
+Working with new Technology proved challenging given the short time-frame, however we believe we were able to do so successfully, despite running in to several challenges, including the Virtual Machine not working with Express, and one member's Firewall preventing the connection to MongoDB servers. 
