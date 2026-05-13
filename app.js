@@ -34,6 +34,14 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use('/auth',require('./routes/authRoutes'));
 
+app.use((req, res, next) => {
+
+    res.locals.user = req.session.user || null;
+
+    next();
+
+});
+
 const dashboardRoutes = require('./routes/dashboardRoutes');
 
 app.use('/', dashboardRoutes);
@@ -41,8 +49,12 @@ app.use('/', require('./routes/bookingRoutes'));
 app.use('/', require('./routes/adminRoutes'));
 app.use('/', require('./routes/eventRoutes'));
 
+app.get('/', (req, res) => {
+    res.render('home');
+});
+
 //Server
-const port=process.env.PORT || 2010;
+const port=process.env.PORT || 2080;
 app.listen(port,()=>console.log(`Server running on port ${port}`));
 
 //Dear group members, please ensure that the following 3 lines of code remaing at the bottom of the app.js
@@ -50,10 +62,3 @@ app.listen(port,()=>console.log(`Server running on port ${port}`));
 const {notFound,errorHandler}=require('./middleware/errorMiddleware');
 app.use(notFound);
 app.use(errorHandler);
-
-
-
-
-
-
-
