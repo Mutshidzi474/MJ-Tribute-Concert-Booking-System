@@ -3,72 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BC Concerts</title>
+<title>MJ Concerts</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/global.css">
 
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark animate__animated animate__fadeInDown">
-
-  <div class="container">
-
-    <a class="navbar-brand" href="/">
-      Belgium Campus Concerts
-    </a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-
-      <span class="navbar-toggler-icon"></span>
-
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-
-      <ul class="navbar-nav mx-auto">
-
-        <li class="nav-item animate__animated animate__fadeInLeft">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-
-        <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 0.4s;">
-          <a class="nav-link" href="/auth/login">User Authentication</a>
-        </li>
-
-        <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 0.2s;">
-          <a class="nav-link" href="/events">Event Management</a>
-        </li>
-
-        <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 1s;">
-          <a class="nav-link" href="/dashboard">Booking & Dashboard</a>
-        </li>
-
-        <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 1s;">
-          <a class="nav-link" href="/contact">Contact</a>
-        </li>
-
-      </ul>
-
-      <span class="navbar-text text-white ml-auto animate__animated animate__fadeInLeft" style="animation-delay: 1.2s;">
-        <% if (typeof user !== 'undefined' && user) { %>
-          <strong><%= user.name %></strong>
-          <small class="d-block" style="font-size: 0.85rem;"><%= user.email %></small>
-        <% } else { %>
-          Guest
-        <% } %>
-      </span>
-
-    </div>
-
-  </div>
-
-</nav>
+<%- include('partials/navbar') %>
 
 <!-- HERO SECTION -->
 <div class="content">
@@ -172,7 +119,7 @@
   <div class="mb-5 animate__animated animate__fadeIn">
 
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <h3>Upcoming Events</h3>
+      <h3 class = "title">Upcoming Events</h3>
       <span class="badge badge-pill badge-dark"><%= typeof upcomingEvents !== 'undefined' ? upcomingEvents : (Array.isArray(events) ? events.length : 0) %> events</span>
     </div>
 
