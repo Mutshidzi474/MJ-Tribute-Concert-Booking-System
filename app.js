@@ -46,15 +46,30 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 
 app.use('/', dashboardRoutes);
 app.use('/', require('./routes/bookingRoutes'));
-app.use('/', require('./routes/adminRoutes'));
+app.use('/admin', require('./routes/adminRoutes'));
 app.use('/', require('./routes/eventRoutes'));
+app.use('/', require('./routes/contactRoutes'));
 
 app.get('/', (req, res) => {
     res.render('home');
 });
 
+// Route for users management (accessible at /users)
+app.get('/users', (req, res, next) => {
+    // Check if user is admin
+    if (req.session && req.session.user && req.session.user.role === 'admin') {
+        const adminMiddleware = require('./middleware/adminMiddleware');
+        return adminMiddleware(req, res, () => {
+            const {manageUsers} = require('./controllers/adminController');
+            manageUsers(req, res);
+        });
+    }
+    // Not admin, redirect to login
+    res.redirect('/auth/login');
+});
+
 //Server
-const port=process.env.PORT || 2080;
+const port=process.env.PORT || 9100;
 app.listen(port,()=>console.log(`Server running on port ${port}`));
 
 //Dear group members, please ensure that the following 3 lines of code remaing at the bottom of the app.js
@@ -62,3 +77,4 @@ app.listen(port,()=>console.log(`Server running on port ${port}`));
 const {notFound,errorHandler}=require('./middleware/errorMiddleware');
 app.use(notFound);
 app.use(errorHandler);
+
