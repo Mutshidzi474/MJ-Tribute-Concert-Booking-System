@@ -1,14 +1,15 @@
-//Event Schema
+const mongoose = require('mongoose');
+
 const eventSchema = new mongoose.Schema({
-    bookingID: { type: String, required: true, unique: true },
-    eventType: { type: String, required: true },
-    headliner: { type: String, required: true },
-    managerID: { type: String, required: true },
-    date: { type: Date, required: true },
-    time: { type: Date, required: true },
-    venue: { type: String, required: true },
+    title: String,
+    date: Date,
+    category: String,
+    location: String,
+    description: String,
+    capacity: Number,
+    price: { type: Number, min: 400 },
+    ticketAvailable: Number
+
 });
 
-const Event = mongoose.model('Event', eventSchema);
-
-module.exports = Event;
+module.exports = mongoose.model('Event', eventSchema);
