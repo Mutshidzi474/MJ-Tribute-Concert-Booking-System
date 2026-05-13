@@ -3,28 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Cancel Booking</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/global.css">
 </head>
 <body>
-    <%- include('partials/navbar') %>
-    <h1>Register</h1>
-    <% if (error) { %>
-        <div style="color: red; margin-bottom: 20px;"><%= error %></div>
+<%- include('partials/navbar') %>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Cancel a Booking</h1>
+        <a href="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+
+    <% if (bookings && bookings.length > 0) { %>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Concert</th>
+                        <th>Date</th>
+                        <th>Tickets</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% bookings.forEach(booking => { %>
+                        <tr>
+                            <td><%= booking.event ? booking.event.title : booking.eventName || 'Unknown Event' %></td>
+                            <td><%= booking.event && booking.event.date ? new Date(booking.event.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : 'N/A' %></td>
+                            <td><%= booking.tickets %></td>
+                            <td><%= booking.status %></td>
+                            <td>
+                                <form action="/cancel/<%= booking._id %>" method="POST" onsubmit="return confirm('Are you sure you want to cancel this booking?');">
+                                    <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    <% } else { %>
+        <div class="alert alert-info">You currently have no active bookings to cancel.</div>
     <% } %>
-    <form action="/auth/register" method="POST">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Register</button>
-    </form>
-    <%- include('partials/footer') %>
+</div>
+</body>
 </html>
