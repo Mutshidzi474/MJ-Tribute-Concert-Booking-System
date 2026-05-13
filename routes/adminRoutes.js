@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {adminDashboard, manageEvents, manageUsers} = require('../controllers/adminController');
-const adminMiddleware = require('../middleware/adminMidddleware');
+const adminMiddleware = require('../middleware/adminMiddleware');
 
 // Admin dashboard route
 router.get('/admin/dashboard', adminMiddleware, adminDashboard);
