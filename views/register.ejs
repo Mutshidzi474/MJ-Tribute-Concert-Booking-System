@@ -4,28 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/global.css">
 </head>
-<body>
+<body class="page-auth">
     <%- include('partials/navbar') %>
-    <h1>Register</h1>
-    <% if (error) { %>
-        <div style="color: red; margin-bottom: 20px;"><%= error %></div>
-    <% } %>
-    <form action="/auth/register" method="POST">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-card-header">
+                <h1>Register</h1>
+                <p>Join the Legacy</p>
+            </div>
+
+            <div class="auth-card-body">
+                <% if (typeof error !== 'undefined' && error) { %>
+                    <div class="auth-error"><%= error %></div>
+                <% } %>
+
+                <form action="/auth/register" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+
+                    <div class="form-link">
+                        Already have an account? <a href="/auth/login">Login here</a>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Register</button>
-    </form>
+    </div>
+
     <%- include('partials/footer') %>
 </html>
-
