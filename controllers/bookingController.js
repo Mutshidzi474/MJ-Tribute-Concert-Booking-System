@@ -4,44 +4,56 @@ const Event = require('../models/Event');
 // Create a new booking
 exports.createBooking = async (req, res) => {
     try {
-        const { eventId, ticketsBooked } = req.body;
+        const { userName, eventId, tickets } = req.body;
 
-        // Find the event by ID
+        const events = await Event.find().sort({ date: 1 }).limit(5).lean();
+
+        if (!userName || !eventId || !tickets) {
+            return res.status(400).render('bookticket', { error: 'All fields are required', events });
+        }
+
         const event = await Event.findById(eventId);
-
-        //check if the event exists
         if (!event) {
-            return res.status(404).json({ message: 'Event not found' });
+            return res.status(400).render('bookticket', { error: 'Selected event is not available', events });
         }
 
-        //Check availability of tickets
-        if (event.ticketsAvailable < ticketsBooked) {
-            return res.status(400).json({ message: 'Not enough tickets available' });
+        const ticketCount = Number(tickets);
+        if (ticketCount <= 0) {
+            return res.status(400).render('bookticket', { error: 'Please select a valid ticket quantity', events });
         }
-    
 
-        //Reduce the number of available tickets for the event
-        event.ticketsAvailable -= ticketsBooked;
-        await event.save();
+        if (event.ticketAvailable != null && ticketCount > event.ticketAvailable) {
+            return res.status(400).render('bookticket', { error: 'Not enough tickets remaining for this event', events });
+        }
 
-        //Create a new booking
         const booking = new Booking({
             user: req.session.userId,
-            event: eventId,
-            ticketsBooked: ticketsBooked
+            userName,
+            eventId: eventId,
+            eventName: event.title,
+            tickets: ticketCount
         });
+
         await booking.save();
-        res.status(201).json({ message: 'Booking created successfully', booking });
+
+        if (event.ticketAvailable != null) {
+            event.ticketAvailable -= ticketCount;
+            await event.save();
+        }
+
+        res.redirect('/dashboard');
     }
     catch (error) {
-        res.status(500).json({ message: 'Error creating booking' });
+        console.error(error);
+        const events = await Event.find().sort({ date: 1 }).limit(5).lean();
+        res.status(500).render('bookticket', { error: 'Error creating booking', events });
     }
 };
 
 // Get all bookings for the logged-in user
 exports.getUserBookings = async (req, res) => {
     try {
-        const bookings = await Booking.find({ user: req.session.userId }).populate('event');
+        const bookings = await Booking.find({ user: req.session.userId });
         res.status(200).json({ bookings });
     }
     catch (error) {
