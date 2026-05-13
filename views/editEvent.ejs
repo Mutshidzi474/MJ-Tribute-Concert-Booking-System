@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Event</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Edit Event</h1>
+        <a href="/events" class="btn btn-secondary">Back to Event Management</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form action="/events/<%= event._id %>/update" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Title</label>
+                        <input type="text" name="title" class="form-control" value="<%= event.title %>" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Date</label>
+                        <input type="date" name="date" class="form-control" value="<%= event.date.toISOString().slice(0,10) %>" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Category</label>
+                        <input type="text" name="category" class="form-control" value="<%= event.category %>">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Location</label>
+                        <input type="text" name="location" class="form-control" value="<%= event.location %>" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Capacity</label>
+                        <input type="number" name="capacity" class="form-control" value="<%= event.capacity %>" min="1" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Ticket Price (ZAR)</label>
+                        <input type="number" name="price" class="form-control" value="<%= event.price %>" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Available Tickets</label>
+                        <input type="number" name="ticketAvailable" class="form-control" value="<%= event.ticketAvailable %>" min="0" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>&nbsp;</label>
+                        <button type="submit" class="btn btn-success btn-block">Update Event</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" class="form-control" rows="3"><%= event.description %></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
