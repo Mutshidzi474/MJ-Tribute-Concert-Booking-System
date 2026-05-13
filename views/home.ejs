@@ -3,60 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BC Concerts</title>
+<title>MJ Tribute Concerts</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link rel="stylesheet" href="/public/css/home.css">
+<link rel="stylesheet" href="/css/global.css">
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark animate__animated animate__fadeInDown">
-  <div class="container">
-    <a class="navbar-brand" href="Home.html">Belgium Campus Concerts</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item animate__animated animate__fadeInLeft">
-          <a class="nav-link" href="Home.html">Home</a>
-        </li>
-        <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 0.4s;">
-          <a class="nav-link" href="Auth.html">User Authentication</a>
-        </li>
-        <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 0.2s;">
-          <a class="nav-link" href="Management.html">Event Management</a>
-        </li>
-        <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 1s;">
-          <a class="nav-link" href="Booking.html">Booking & Dashboard</a>
-        </li>
-          <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 1s;">
-          <a class="nav-link" href="Contact.html">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<body class="page-home">
+  <%- include('partials/navbar') %>
 
-<div class="content">
-  <div class="jumbotron jumbotron-fluid animate__animated animate__fadeIn">
-    <div class="container">
-      <h1 class="display-4 animate__animated animate__fadeInUp">Belgium Campus Concerts</h1>
-      <p class="lead animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">It's all about the music</p>
-      <p class="animate__animated animate__fadeInUp" style="animation-delay: 1s;">Come see the greatest artists!</p>
+  <div class="content">
+    <div class="jumbotron jumbotron-fluid animate__animated animate__fadeIn">
+      <div class="container">
+        <h1 class="display-4 animate__animated animate__fadeInUp">Michael Jackson Tribute Concerts</h1>
+        <p class="lead animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">It's all about the music</p>
+        <p class="animate__animated animate__fadeInUp" style="animation-delay: 1s;">A high-energy live stage production, often lasting around 1 hour and 45 minutes, 
+          that celebrates the legendary music and legacy of the King of Pop, Michael Jackson!</p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg animate__animated animate__fadeInUp" href="/events" role="button" style="animation-delay: 1.5s;">Explore Events</a>
+      </div>
     </div>
-  </div>
-</div>
 
-<footer class="bg-dark text-white py-3">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <p>&copy; 2024 Belgium Campus Concerts. All rights reserved.</p>
+    <!-- Search & Quick Filter Section -->
+    <div class="container py-5">
+      <div class="row mb-4">
+        <div class="col-md-12">
+          <h2 class="mb-4">Find Your Perfect Concert</h2>
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <form method="GET" action="/events" class="form-row align-items-end">
+                <div class="form-group col-md-4">
+                  <label>Search Events</label>
+                  <input 
+                    type="text" 
+                    name="search" 
+                    class="form-control" 
+                    placeholder="Search by title, location...">
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label>From Date</label>
+                  <input type="date" name="dateFrom" class="form-control">
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label>To Date</label>
+                  <input type="date" name="dateTo" class="form-control">
+                </div>
+
+                <div class="form-group col-md-2">
+                  <button type="submit" class="btn btn-primary btn-block">Search</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="row mt-5">
+        <div class="col-md-4 mb-4">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">🎤 Live Performances</h5>
+              <p class="card-text">Experience authentic Michael Jackson tribute performances with stunning choreography and production.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">🎵 All Your Favorites</h5>
+              <p class="card-text">Enjoy all the classic hits including Thriller, Billie Jean, Smooth Criminal, and many more!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card text-center shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">🎟️ Easy Booking</h5>
+              <p class="card-text">Simple and secure ticket booking. Get your seats now and don't miss the magic!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="row mt-5">
+        <div class="col-md-12 text-center">
+          <h3 class="mb-4">Ready to be thrilled?</h3>
+          <a href="/events" class="btn btn-primary btn-lg">View All Events</a>
         </div>
       </div>
     </div>
-</footer>
+  </div>
 
+  <%- include('partials/footer') %>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
