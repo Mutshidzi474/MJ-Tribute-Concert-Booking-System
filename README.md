@@ -16,6 +16,7 @@ Thabang Molise - 601586 - Security and DevOps Engineer
 Setup:
 Extract the folder in to your File Libraries. Once completed, Open the folder in VSCode.
 From there open the Terminal either from the Hotbar, or using the shortcut "Cntrl+`". In the terminal, rn the commands "npm init -y" to initialize, and "npm install Express" and "npm install express-validator" to install Express for JavaScript.
+Following that, run the command "node app.js" to run the program.
 Once that is complete, open your browser, in URL Bar, type "localhost:2080", press Enter, and the website will display.
 
 
