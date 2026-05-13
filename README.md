@@ -1,9 +1,9 @@
 WPR3781 Project Group M
 
-# MJ-Tribute-Concert-Booking-System
+## MJ-Tribute-Concert-Booking-System
 A full-stack concert booking platform built for managing Michael Jackson tribute concert events, ticket bookings, user authentication, and admin event management.
 
-# Project Overview
+## Project Overview
 
 The Michael Jackson Tribute Concert Booking System is a web-based application that allows users to:
 Register and log into the system
@@ -15,8 +15,8 @@ Allow administrators to manage events and users
 
 The system follows the MVC (Model-View-Controller) architecture and uses MongoDB Atlas as the cloud database.
 
-# Technologies used:
-#Frontend
+## Technologies used:
+# Frontend
 - HTML5
 - CSS3
 - Bootstrap
