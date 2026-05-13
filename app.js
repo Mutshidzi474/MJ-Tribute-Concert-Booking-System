@@ -14,13 +14,16 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname,'public')));
 app.set('view engine','ejs');
-app.set('views',path.join(__dirname+'views'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 app.use(session({
-    secret:process.env.SESSION_SECRET,
-    resave:false,
-    saveUninitialized:false,
-    store:MongoStore.create({mongoUrl:process.env.MONGO_URI}),
-    cookie:{maxAge:1000*60*60*24}
+    secret: process.env.SESSION_SECRET || "devSecret123",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGO_URI
+    }),
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }
 }));
 
 //Database Connection
@@ -31,6 +34,28 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use('/auth',require('./routes/authRoutes'));
 
+app.use((req, res, next) => {
+
+    res.locals.user = req.session.user || null;
+
+    next();
+
+});
+
+const dashboardRoutes = require('./routes/dashboardRoutes');
+
+app.use('/', dashboardRoutes);
+app.use('/', require('./routes/bookingRoutes'));
+app.use('/', require('./routes/adminRoutes'));
+app.use('/', require('./routes/eventRoutes'));
+
+app.get('/', (req, res) => {
+    res.render('home');
+});
+
+//Server
+const port=process.env.PORT || 2080;
+app.listen(port,()=>console.log(`Server running on port ${port}`));
 
 //Dear group members, please ensure that the following 3 lines of code remaing at the bottom of the app.js
 //after every call for middleware, because express runs from top to bottom for some fun reason.(remove comment when project completed)
@@ -38,9 +63,9 @@ const {notFound,errorHandler}=require('./middleware/errorMiddleware');
 app.use(notFound);
 app.use(errorHandler);
 
-//Server
-const port=process.env.PORT || 3000;
-app.listen(port,()=>console.log(`Server running on port ${port}`));
+
+
+
 
 
 
