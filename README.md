@@ -1,24 +1,41 @@
 WPR3781 Project Group M
 
 # MJ-Tribute-Concert-Booking-System
-A Booking Website containing a home page, Login Screen, Contact Page, Booking Page and a page exclusive to admin for CRUD operations
+A full-stack concert booking platform built for managing Michael Jackson tribute concert events, ticket bookings, user authentication, and admin event management.
 
-Technologies used:
-- Microsoft VSCodeHTML5
-- CSS3
-- Javascript
-- Bootstrap4/5
-- Animate.css
-- EJS
-- express-session
-- connect-mongo
-- bcryptjs
-- dotenv
-- GitHub
-- Node.js
-- Express
-- MongoDB Atlas
-- Mongoose
+# Project Overview
+
+The Michael Jackson Tribute Concert Booking System is a web-based application that allows users to:
+Register and log into the system
+Browse upcoming concert events
+Book concert tickets
+Manage bookings
+View a personal dashboard
+Allow administrators to manage events and users
+
+The system follows the MVC (Model-View-Controller) architecture and uses MongoDB Atlas as the cloud database.
+
+# Technologies used:
+Frontend
+HTML5
+CSS3
+Bootstrap
+Animate.css
+EJS
+Backend
+Node.js
+Express.js
+Database
+MongoDB Atlas
+Mongoose
+Authentication & Security
+bcryptjs
+express-session
+connect-mongo
+Development Tools
+Git
+GitHub
+Visual Studio Code
 
 Team Members and Roles:
 Mutshidzi Nduvheni - 601781 - Team Lead and Project Coordinator
