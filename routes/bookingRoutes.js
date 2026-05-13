@@ -73,7 +73,11 @@ router.get('/book-ticket', async (req, res) => {
     const events = await Event.find().sort({ date: 1 }).limit(5).lean();
     res.render('bookTicket', { events });
 });
-
+router.get('/book', isLoggedIn, async (req, res) => {
+    await seedDefaultEvents();
+    const events = await Event.find().sort({ date: 1 }).lean();
+    res.render('bookticket', { events });
+});
 router.get('/bookings', isLoggedIn, async (req, res) => {
     const bookings = await Booking.find({ user: req.session.userId })
         .populate('eventId')
