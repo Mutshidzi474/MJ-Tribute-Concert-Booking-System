@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Ticket</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg">
+
+        <div class="card-body">
+
+            <h1 class="mb-4">
+                Book Concert Tickets
+            </h1>
+
+            <% if (typeof error !== 'undefined') { %>
+                <div class="alert alert-danger"><%= error %></div>
+            <% } %>
+
+            <form action="/book" method="POST">
+
+                <div class="form-group">
+
+                    <label>Your Name</label>
+
+                    <input type="text"
+                           name="userName"
+                           class="form-control"
+                           required>
+
+                </div>
+
+                    <div class="form-group">
+
+                    <label>Select Event</label>
+
+                    <select name="eventId" class="form-control" required>
+                        <option value="">Choose an event</option>
+                        <% if (Array.isArray(events) && events.length) { %>
+                            <% events.forEach(event => { %>
+                                <option value="<%= event._id %>">
+                                    <%= event.title %> - <%= new Date(event.date).toLocaleDateString() %> (<%= event.location %>)
+                                </option>
+                            <% }) %>
+                        <% } else { %>
+                            <option value="">No events available</option>
+                        <% } %>
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Number of Tickets</label>
+
+                    <input type="number"
+                           name="tickets"
+                           class="form-control"
+                           min="1"
+                           required>
+
+                </div>
+
+                <button class="btn btn-dark">
+                    Confirm Booking
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
