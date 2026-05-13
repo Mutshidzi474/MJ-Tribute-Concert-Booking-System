@@ -22,3 +22,9 @@ Once that is complete, open your browser, in URL Bar, type "localhost:2080", pre
 
 Reflection:
 Working with new Technology proved challenging given the short time-frame, however we believe we were able to do so successfully, despite running in to several challenges, including the Virtual Machine not working with Express, and one member's Firewall preventing the connection to MongoDB servers. 
+
+##NOTE##
+When logging in as an admin on the platform, use these details:
+
+email: mut05@gmail.com
+password: concert123
