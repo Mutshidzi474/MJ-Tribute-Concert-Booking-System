@@ -30,7 +30,6 @@ const loginUser=async (req,res)=>{
     try{
         const {email,password}=req.body;
         const user=await User.findOne({email});
-        if(!User){return res.render('login',{error:'Invalid email or password'});}
 
         if (!user) {
             return res.render('login', { error: 'Invalid email or password' });
