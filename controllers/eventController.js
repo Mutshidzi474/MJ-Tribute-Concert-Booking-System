@@ -109,3 +109,61 @@ exports.deleteEvent = async (req, res) => {
     }
 };
 
+exports.getEvents = async (req, res) => {
+    try {
+        const { search, dateFrom, dateTo, category, availability } = req.query;
+        
+        // Build filter object
+        let filter = {};
+        
+        // Search by title or location
+        if (search) {
+            filter.$or = [
+                { title: { $regex: search, $options: 'i' } },
+                { location: { $regex: search, $options: 'i' } },
+                { description: { $regex: search, $options: 'i' } }
+            ];
+        }
+        
+        // Filter by date range
+        if (dateFrom || dateTo) {
+            filter.date = {};
+            if (dateFrom) {
+                filter.date.$gte = new Date(dateFrom);
+            }
+            if (dateTo) {
+                filter.date.$lte = new Date(dateTo);
+            }
+        }
+        
+        // Filter by category
+        if (category && category !== '') {
+            filter.category = category;
+        }
+        
+        // Filter by availability (only events with available tickets)
+        if (availability === 'true') {
+            filter.ticketAvailable = { $gt: 0 };
+        }
+        
+        const events = await Event.find(filter).sort({ date: 1 }).lean();
+        const isAdmin = req.session && req.session.user && req.session.user.role === 'admin';
+        
+        // Get all categories for filter dropdown
+        const allEvents = await Event.find().lean();
+        const categories = [...new Set(allEvents.map(e => e.category).filter(c => c))];
+        
+        if (isAdmin) {
+            return res.render('manageEvents', { events });
+        }
+        
+        res.render('events', { 
+            events, 
+            categories,
+            filters: { search, dateFrom, dateTo, category, availability }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).render('events', { events: [], error: 'Failed to load events', categories: [], filters: {} });
+    }
+};
