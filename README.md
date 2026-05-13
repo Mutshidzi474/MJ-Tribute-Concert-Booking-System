@@ -16,23 +16,26 @@ Allow administrators to manage events and users
 The system follows the MVC (Model-View-Controller) architecture and uses MongoDB Atlas as the cloud database.
 
 # Technologies used:
-Frontend
-HTML5
-CSS3
-Bootstrap
-Animate.css
-EJS
-Backend
-Node.js
-Express.js
-Database
-MongoDB Atlas
-Mongoose
-Authentication & Security
-bcryptjs
-express-session
-connect-mongo
-Development Tools
+#Frontend
+- HTML5
+- CSS3
+- Bootstrap
+- Animate.css
+- EJS
+
+# Backend
+- Node.js
+- Express.js
+- Database
+- MongoDB Atlas
+- Mongoose
+  
+# Authentication & Security
+- bcryptjs
+- express-session
+- connect-mongo
+  
+# Development Tools
 Git
 GitHub
 Visual Studio Code
