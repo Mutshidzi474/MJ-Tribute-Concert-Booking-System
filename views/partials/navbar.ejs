@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark animate__animated animate__fadeInDown">
+    <div class="container">
+      <a class="navbar-brand" href="/">MJ Tribute Concerts</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/auth/login">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link" href="/events">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+        </ul>
+        <span class="navbar-text text-white ml-auto">
+          <% if (typeof user !== 'undefined' && user) { %>
+            <strong><%= user.name %></strong>
+          <% } else { %> Guest <% } %>
+        </span>
+      </div>
+    </div>
+  </nav>
 
+</nav>
+</body>
+</html>
