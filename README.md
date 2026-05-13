@@ -1,10 +1,24 @@
 WPR3781 Project Group M
 
 # MJ-Tribute-Concert-Booking-System
-A Booking Website containing a home page, Login Screen, Contact Page, and a Booking Page
+A Booking Website containing a home page, Login Screen, Contact Page, Booking Page and a page exclusive to admin for CRUD operations
 
 Technologies used:
-Microsoft VSCode, HTML, CSS, Javascript, GitHub, Node.js, Express, MongoDB Atlas and Mongoose
+- Microsoft VSCodeHTML5
+- CSS3
+- Javascript
+- Bootstrap4/5
+- Animate.css
+- EJS
+- express-session
+- connect-mongo
+- bcryptjs
+- dotenv
+- GitHub
+- Node.js
+- Express
+- MongoDB Atlas
+- Mongoose
 
 Team Members and Roles:
 Mutshidzi Nduvheni - 601781 - Team Lead and Project Coordinator
@@ -15,9 +29,9 @@ Thabang Molise - 601586 - Security and DevOps Engineer
 
 Setup:
 Extract the folder in to your File Libraries. Once completed, Open the folder in VSCode.
-From there open the Terminal either from the Hotbar, or using the shortcut "Cntrl+`". In the terminal, rn the commands "npm init -y" to initialize, and "npm install Express" and "npm install express-validator" to install Express for JavaScript.
+From there open the Terminal either from the Hotbar, or using the shortcut "Cntrl+`". In the terminal, run the commands "npm init -y" to initialize, and "npm install Express" and "npm install express-validator" to install Express for JavaScript.
 Following that, run the command "node app.js" to run the program.
-Once that is complete, open your browser, in URL Bar, type "localhost:2080", press Enter, and the website will display.
+Once that is complete, open your browser, in URL Bar, type "localhost:{port}", press Enter, and the website will display.
 
 
 Reflection:
