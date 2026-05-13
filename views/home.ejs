@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MJ Tribute Concerts</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark animate__animated animate__fadeInDown">
+  <div class="container">
+    <a class="navbar-brand" href="Home.html">MJ Tribute Concerts</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+     <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav mx-auto">
+
+        <li class="nav-item animate__animated animate__fadeInLeft">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+
+        <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 0.4s;">
+          <a class="nav-link" href="/auth/login">User Authentication</a>
+        </li>
+
+        <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 0.2s;">
+          <a class="nav-link" href="/events">Event Management</a>
+        </li>
+
+        <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 1s;">
+          <a class="nav-link" href="/dashboard">Booking & Dashboard</a>
+        </li>
+
+        <li class="nav-item animate__animated animate__fadeInLeft" style="animation-delay: 1s;">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+
+      </ul>
+
+      <span class="navbar-text text-white ml-auto animate__animated animate__fadeInLeft" style="animation-delay: 1.2s;">
+        <% if (typeof user !== 'undefined' && user) { %>
+          <strong><%= user.name %></strong>
+          <small class="d-block" style="font-size: 0.85rem;"><%= user.email %></small>
+        <% } else { %>
+          Guest
+        <% } %>
+      </span>
+
+    </div>
+
+  </div>
+
+</nav>
+
+<div class="content">
+  <div class="jumbotron jumbotron-fluid animate__animated animate__fadeIn">
+    <div class="container">
+      <h1 class="display-4 animate__animated animate__fadeInUp">Michael Jackson Tribute Concerts</h1>
+      <p class="lead animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">It's all about the music</p>
+      <p class="animate__animated animate__fadeInUp" style="animation-delay: 1s;">A high-energy live stage production, often lasting around 1 hour and 45 minutes, 
+        that celebrates the legendary music and legacy of the King of Pop, Michael Jackson!</p>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-dark text-white py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <p>&copy; 2024 MJ Tribute Concerts. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
 
